@@ -1,0 +1,78 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title">مقالات</h4>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="form">
+              <div class="row">
+                <div class="col-lg-6">
+                  <input type="file" formControlName="image" (change)="fileChangeEvent($event)">
+                  <img src={{selectedImage}}>
+                </div>
+
+                <div class="col-md-6">
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <mat-form-field class="example-full-width">
+                        <input matInput formControlName="title" placeholder=" عنوان" autocomplete="off">
+                      </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                      <mat-form-field class="example-full-width">
+                        <input matInput formControlName="alias" placeholder=" نام مستعار" autocomplete="off">
+                      </mat-form-field>
+                    </div>
+
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="input-holder">
+                        <label class="lbl-mat">دسته بندی مقالات: </label>
+                        <select2 (valueChanged)="select2Change($event)" [data]="selectData " [value]="startValue"
+                          [cssImport]="true" [options]="options" [width]="'100%'"></select2>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <section class="example-section">
+                        <label class="lbl-mat">قابلیت انتشار: </label>
+                        <mat-slide-toggle formControlName="status" [color]="'primary'">
+                        </mat-slide-toggle>
+                      </section>
+                    </div>
+                    <div class="col-md-6">
+                      <section class="example-section">
+                        <label class="lbl-mat"> بلاگ: </label>
+                        <mat-slide-toggle formControlName="blog" [color]="'primary'">
+                        </mat-slide-toggle>
+                      </section>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+
+              <div class="clearfix">
+                <button mat-raised-button type="submit" class="btn btn-success pull-right" (click)="onSubmit()"
+                  [disabled]="disableBtn">ارسال</button>
+                <button mat-raised-button type="submit" class="btn btn-default pull-right"
+                  (click)="onCancel()">انصراف</button>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

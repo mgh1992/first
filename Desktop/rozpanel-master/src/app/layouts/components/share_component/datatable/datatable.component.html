@@ -1,0 +1,58 @@
+   <div  *ngIf="!page.count">
+        <h3> هیچ داده ای وجود ندارد. برای ایجاد داده ی جدید در قسمت بالا کلیک کنید.</h3>
+   </div>
+   
+   <ngx-datatable
+            *ngIf="page.count"
+            class="material striped"
+            [rows]="rows"
+            [columns]="columns"
+            [columnMode]="'force'"
+            [headerHeight]="50"
+            [footerHeight]="50"
+            [rowHeight]="'auto'"
+            [externalPaging]="true"
+            [externalSorting]="true"
+            [count]="page.count"
+            [offset]="page.offset"
+            [limit]="page.limit"
+            [sortType]="'single'"
+            (page)="pageCallback($event)"
+            (sort)="sortCallback($event)"
+            [messages]="my_messages"
+    >
+        <ngx-datatable-column *ngFor="let column of columns" name="{{ column.title }}">
+            <ng-template  let-value="value" let-row="row" let-rowIndex="rowIndex"
+                         ngx-datatable-cell-template
+            >
+            {{ row[column.name] }}
+            </ng-template>
+            
+        </ngx-datatable-column>
+
+
+
+
+
+        <!--additional -->
+        <ngx-datatable-column *ngIf="edit===true && !publish" name="ویرایش" [sortable]="false">
+            <ng-template let-value="value" let-row="row" let-rowIndex="rowIndex"
+                         ngx-datatable-cell-template>
+                <a [routerLink]="['/'+ address, row['id']]"><i class="material-icons">edit</i></a>
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column *ngIf="delete===true " name="حذف" [sortable]="false">
+            <ng-template let-value="value" let-row="row" let-rowIndex="rowIndex"
+                         ngx-datatable-cell-template>
+                <a [routerLink]="" (click)="onDelete(row.id)"><i class="material-icons">delete_forever</i></a>
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column *ngIf="link " name="سوابق اجرایی" [sortable]="false">
+            <ng-template let-value="value" let-row="row" let-rowIndex="rowIndex"
+                         ngx-datatable-cell-template>
+                <a   (click)="goToLinkPage(row.id,link)"><i class="material-icons" style="cursor: pointer" >compare_arrows</i></a>
+            </ng-template>
+        </ngx-datatable-column>
+
+    </ngx-datatable>

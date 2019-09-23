@@ -1,0 +1,17 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card card-plain">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title mt-0">دسته بندی  مقالات</h4>
+            <p class="card-category"> برای ایجاد دسته بندی مقالات <a routerLink="/categories/create">کلیک کنید.</a></p>
+          </div>
+          <div class="card-body">
+            <app-datatable [columns]="columns" [address]="'categories'"></app-datatable>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

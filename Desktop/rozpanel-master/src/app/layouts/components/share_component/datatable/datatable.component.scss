@@ -1,0 +1,17 @@
+:host ::ng-deep .pager {
+  direction: ltr;
+  float: left;
+}
+
+:host ::ng-deep datatable-header * {
+  text-align: center;
+}
+
+:host ::ng-deep datatable-scroller * {
+  text-align: center;
+}
+h3 {
+  display: flex;
+  justify-content: center;
+  user-select: none;
+}
